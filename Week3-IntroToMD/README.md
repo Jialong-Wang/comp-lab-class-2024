@@ -39,5 +39,5 @@ The project workflow consists of the following steps:
 ## Additional Steps for Step 9 (10 ns MD)
 - Place the input file (`md_10ns.mdp`) inside the `Input` directory.
 - Place the SBATCH file (`md_10ns.sbatch`) inside the `Input` directory.
-- Submit the job using the command: `sbatch md_10ns.sbatch`.
+- Submit the job using the command: `sbatch md_10ns.sbatch`. test
   
