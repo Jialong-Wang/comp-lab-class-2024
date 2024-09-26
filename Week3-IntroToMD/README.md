@@ -1,8 +1,8 @@
 # Project Overview
 Before starting, ensure you load the necessary module with the following commands:
-    'srun --mem=8GB -t 4:00:00 --pty /bin/bash' 
-    'module avail gromacs'
-    'module load gromacs/openmpi/intel/2020.4'
+    `srun --mem=8GB -t 4:00:00 --pty /bin/bash` 
+    `module avail gromacs`
+    `module load gromacs/openmpi/intel/2020.4`
 
 The primary goal of this project is to perform a sample molecular dynamics (MD) calculation on the 2JOF protein, following the steps provided in this tutorial: [MD Tutorial: Lysozyme in Water](http://www.mdtutorials.com/gmx/lysozyme/index.html).
 
