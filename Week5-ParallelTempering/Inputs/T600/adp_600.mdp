@@ -1,0 +1,54 @@
+; Input file for MD simulation of alanine dipeptide at 300K for 15ns
+
+define              =  
+integrator          =  md             ; Algorithm (MD = Molecular Dynamics)
+nsteps              =  7500000        ; Number of steps (15 ns)
+dt                  =  0.002          ; Time step (2 fs)
+
+; Removing center of mass (COM) translation and rotation
+comm_mode           =  Angular 
+nstcomm             =  1000
+
+; Output control
+nstlog              =  5000           ; Write to log file every 5000 steps
+nstenergy           =  5000           ; Write energy to energy file every 5000 steps
+nstxout             =  500            ; Write coordinates every 500 steps
+nstxtcout           =  500            ; Write compressed trajectory (xtc) every 500 steps
+xtc-precision       =  1000           ; Precision of .xtc file
+xtc-grps            =  Protein        ; Write trajectory for protein only
+nstvout             =  0  
+nstfout             =  0
+
+; Neighbor searching
+cutoff-scheme       =  group
+nstlist             =  0 
+ns_type             =  simple 
+pbc                 =  no             ; No periodic boundary conditions
+rlist               =  0.0
+
+; Electrostatics
+rcoulomb            =  0.0
+coulombtype         =  Cut-off 
+
+; van der Waals interactions
+vdw-type            =  Cut-off 
+rvdw                =  0.0 
+
+; Constraints
+constraints         =  all-bonds 
+constraint-algorithm=  lincs
+lincs_iter          =  4
+
+; Temperature coupling
+Tcoupl              =  v-rescale      ; Temperature coupling
+tc_grps             =  system         ; One coupling group (entire system)
+tau_t               =  0.1            ; Time constant for coupling
+ref_t               =  440.0          ; Reference temperature (300K)
+
+; Pressure coupling (disabled)
+Pcoupl              =  no             ; No pressure coupling
+
+; Initial velocities
+gen_vel             =  yes            ; Generate initial velocities
+gen_temp            =  300.0          ; Temperature for velocity generation
+gen_seed            =  1536           ; Random seed for velocity generation

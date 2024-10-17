@@ -1,0 +1,4 @@
+State A - Standard Deviation of Phi: 0.5568802296838808
+State A - Standard Deviation of Psi: 1.0294566128425275
+State B - Standard Deviation of Phi: 0.13213973950615396
+State B - Standard Deviation of Psi: 0.34165445114938153
