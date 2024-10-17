@@ -89,6 +89,8 @@ Use Jupyter Notebook `Step3_Analysis.ipynb`, and save the figures inside `Step3_
 `2d_fes_contours.png` looks pretty cool, I really like it to be honest.
 
 ## BONUS Step: Create an Animated GIF of the FES Filling In
+`plumed sum_hills --hills ala2_metad_2d.hills.txt --stride 100 --mintozero --outfile fes_2d_stride.dat`
+
 Then, move and save everything inside `Bonus_Output/`, which I will ignore when putting into GitHub.
 
 Use Jupyter Notebook `Bonus_Analysis.ipynb`, and save the figures inside `Bonus_Figures`.
