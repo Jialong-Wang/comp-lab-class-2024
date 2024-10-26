@@ -1,4 +1,3 @@
-
 Each of the following directories is explained below. Please also refer to the `Assignment.md` from Prof. Hocky's instructions. 
 
 # Section 1: Study SARS-Cov-2 Helicase NSP 13 (6ZSL)
@@ -59,4 +58,11 @@ Distance for Actin Residues near Mg2+ Binding Sites:
 Filename: `Images/af3_mg_distance_actin.png`.
 
 # Section 3: Study 1V1D
-Will update soon...
+
+Everything below is inside `3_1V1D`.
+
+Use the instruction given and Input `rcsb_pdb_1V1D.fasta` to run the 1V1D simulation (AF2).
+
+Use VMD to visualize the 40 proteins inside `Outputs`, changing all representations to NewCartoon and aligning them. Check the image `1v1d_af2_all40` inside `Images`.
+
+Use Jupyter notebook `mdtraj_Analysis.ipynb` to compute the root-mean-squared fluctuation for each residue. (Check `RMSF_per_Residue.png`)
