@@ -1,0 +1,37 @@
+# VMD script to visualize the protein and ligands
+# Load topology file
+mol new ../Inputs/complex.prmtop type parm7
+
+# Load coordinates file
+mol addfile ../Inputs/complex.inpcrd type crd
+
+# Set the first representation: Protein as New Cartoon
+mol delrep 0 0
+mol representation NewCartoon
+mol color Name
+mol selection {protein}
+mol addrep 0
+
+# Set the second representation: Ligands in CPK
+mol representation CPK
+mol color Name
+mol selection {not protein and not water and not ions}
+mol addrep 0
+
+# Center the view on one ligand (adjust residue name as needed)
+set sel [atomselect top {not protein and not water and not ions}]
+$sel update
+$sel get {x y z}
+molinfo top set centerframes 0
+molinfo top set center $sel
+
+# Adjust rendering quality (optional)
+display projection perspective
+display rendermode GLSL
+axes location off
+
+# Save the session for further edits
+save_state "viz_topology.vmd"
+
+# Print a completion message
+puts "Visualization script complete. Load this script in VMD to recreate the view."

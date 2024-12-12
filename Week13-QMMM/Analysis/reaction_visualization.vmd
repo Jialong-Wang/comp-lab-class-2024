@@ -1,0 +1,41 @@
+
+# VMD Script for Before/After Reaction Visualization and Movie Generation
+
+# Load topology file (Amber topology)
+mol new ../Outputs/metad1_initmonitor/complex_LJ_mod.prmtop type parm7
+
+# Load trajectory files
+mol addfile ../Outputs/metad1_initmonitor/METADYN-pos-00.xyz type xyz waitfor all
+mol addfile ../Outputs/metad1_initmonitor/METADYN-pos-01.xyz type xyz waitfor all
+mol addfile ../Outputs/metad1_initmonitor/METADYN-pos-02.xyz type xyz waitfor all
+mol addfile ../Outputs/metad1_initmonitor/METADYN-pos-03.xyz type xyz waitfor all
+
+# Representation for protein (cartoon)
+mol representation NewCartoon
+mol color Name
+mol selection {protein}
+mol addrep 0
+
+# Representation for ligand (dynamic bonds)
+mol representation DynamicBonds
+mol color Name
+mol selection {not protein and not water and not ions}
+mol addrep 0
+
+# Representation for protein sidechains near the ligand
+mol representation Licorice
+mol material Transparent
+mol color Name
+mol selection {protein and within 5 of {not protein and not water and not ions}}
+mol addrep 0
+
+# Save "before" snapshot (first frame)
+animate goto start
+render snapshot ../Figures/before_reaction.tga
+
+# Save "after" snapshot (last frame)
+animate goto end
+render snapshot ../Figures/after_reaction.tga
+
+# Setup for movie creation
+animate write psf ../Figures/reaction_movie_frames.tga
